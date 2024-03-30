@@ -7,12 +7,12 @@ import {
 import { CreateUserController } from "./controllers/createUserController";
 import { ListUserController } from "./controllers/ListUserController";
 import { DeleteUserController } from "./controllers/DeleteUserController";
+import { LoginUserController } from "./controllers/LoginUserController";
 
 export async function routes(
   fastify: FastifyInstance,
   options: FastifyPluginOptions
 ) {
-
   // ROTAS DA APLICAÇÃO
   // Listar todos os usuários
   fastify.get(
@@ -35,6 +35,13 @@ export async function routes(
     "/user",
     async (request: FastifyRequest, reply: FastifyReply) => {
       return new DeleteUserController().handle(request, reply);
+    }
+  );
+
+  fastify.post(
+    "/login",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new LoginUserController().handle(request, reply);
     }
   );
 }
