@@ -12,6 +12,18 @@ class CreateUserService {
       throw new Error("Preencha todos os campos!");
     }
 
+    // Verifica se o email já está cadastrado
+    const usuarioExiste = await prismaClient.user.findFirst({
+      where: {
+        email,
+      },
+    });
+
+    if (usuarioExiste) {
+      throw new Error("Este email já está cadastrado!");
+    }
+
+    // Se o email não existe no banco, cria o novo usuário
     const user = await prismaClient.user.create({
       data: {
         name,

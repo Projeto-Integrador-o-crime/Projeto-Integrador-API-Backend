@@ -8,6 +8,7 @@ import { CreateUserController } from "./controllers/createUserController";
 import { ListUserController } from "./controllers/ListUserController";
 import { DeleteUserController } from "./controllers/DeleteUserController";
 import { LoginUserController } from "./controllers/LoginUserController";
+import { ResetPasswordController } from "./controllers/ResetPasswordService";
 
 export async function routes(
   fastify: FastifyInstance,
@@ -38,10 +39,19 @@ export async function routes(
     }
   );
 
+  // Login usuário
   fastify.post(
     "/login",
     async (request: FastifyRequest, reply: FastifyReply) => {
       return new LoginUserController().handle(request, reply);
+    }
+  );
+
+  // Redefinir senha 
+  fastify.post(
+    "/reset-password",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new ResetPasswordController().handle(request, reply);
     }
   );
 }
