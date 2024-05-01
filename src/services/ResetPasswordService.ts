@@ -22,6 +22,11 @@ class ResetPasswordService {
             throw new Error("Email não encontrado!");
         }
 
+        // Verifica se a nova senha é igual à senha atual
+        if (newPassword === existingUser.password) {
+            throw new Error("A nova senha não pode ser igual à senha atual!");
+        }
+
         // Atualiza a senha do usuário
         const updatedUser = await prismaClient.user.update({
             where: {
