@@ -9,6 +9,7 @@ import { ListUserController } from "./controllers/ListUserController";
 import { DeleteUserController } from "./controllers/DeleteUserController";
 import { LoginUserController } from "./controllers/LoginUserController";
 import { ResetPasswordController } from "./controllers/ResetPasswordService";
+import { UpdateEditUserController } from "./controllers/UpdateEditUserController"
 
 export async function routes(
   fastify: FastifyInstance,
@@ -52,6 +53,14 @@ export async function routes(
     "/reset-password",
     async (request: FastifyRequest, reply: FastifyReply) => {
       return new ResetPasswordController().handle(request, reply);
+    }
+  );
+
+  // Atualizar perfil do usuário
+  fastify.put(
+    "/user/profile",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new UpdateEditUserController().handle(request, reply);
     }
   );
 }

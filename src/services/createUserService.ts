@@ -4,10 +4,11 @@ interface CreateUserProps {
   name: string;
   email: string;
   password: string;
+  description: string;
 }
 
 class CreateUserService {
-  async execute({ name, email, password }: CreateUserProps) {
+  async execute({ name, email, password, description }: CreateUserProps) {
     if (!name || !email || !password) {
       throw new Error("Preencha todos os campos!");
     }
@@ -29,6 +30,7 @@ class CreateUserService {
         name,
         email,
         password,
+        description
       },
     });
 
