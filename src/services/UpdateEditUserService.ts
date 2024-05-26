@@ -3,17 +3,18 @@ import prismaClient from "../prisma";
 interface UpdateUserProps {
   id: string;
   name?: string;
-  description?: string;
+  description?: string | null;
+  profilePicture?: string | null;
 }
 
 class UpdateEditUserService {
-  async execute({ id, name, description }: UpdateUserProps) {
+  async execute({ id, name, description, profilePicture }: UpdateUserProps) {
     if (!id) {
       throw new Error("ID do usuário não fornecido!");
     }
 
     // Verifica se o usuário existe
-    const existingUser = await prismaClient.user.findFirst({
+    const existingUser = await prismaClient.user.findUnique({
       where: { id },
     });
 
@@ -21,12 +22,13 @@ class UpdateEditUserService {
       throw new Error("Usuário não encontrado!");
     }
 
-    // Atualiza os campos name e description do usuário
+    // Atualiza os campos do usuário
     const updatedUser = await prismaClient.user.update({
       where: { id },
       data: {
-        ...(name && { name }),
-        ...(description && { description }),
+        name: name || undefined,
+        description: description || undefined,
+        profilePicture: profilePicture || undefined
       },
     });
 

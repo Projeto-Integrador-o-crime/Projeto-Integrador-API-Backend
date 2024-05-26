@@ -19,6 +19,7 @@ model user {
   email    String
   password String
   description String
+  profilePicture String
 
   @@map("users")
 }
