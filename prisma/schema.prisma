@@ -31,5 +31,5 @@ model product {
   price          Float
   productPicture String
 
-  @@map("pcroduts")
+  @@map("products")
 }

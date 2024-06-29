@@ -13,6 +13,7 @@ import { UpdateEditUserController } from "./controllers/UserAllControllers/Updat
 import { GetUserByIdController } from "./controllers/UserAllControllers/GetUserByIdController";
 import { CreateProductController } from "./controllers/ProductAllControllers/createProductController";
 import { GetProductByIdController } from "./controllers/ProductAllControllers/GetProductByIdController";
+import { ListProductController } from "./controllers/ProductAllControllers/ListProductController";
 
 export async function routes(
   fastify: FastifyInstance,
@@ -90,6 +91,15 @@ export async function routes(
     }
   );
 
+  //Listar todos os produtos
+  fastify.get(
+    "/products",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new ListProductController().handle(request, reply);
+    }
+  );
+
+  //Listar produtos por Id
   fastify.get(
     "/product-data/:id",
     async (request: FastifyRequest, reply: FastifyReply) => {
@@ -97,8 +107,5 @@ export async function routes(
     }
   );
 
-
-
-
-
+  
 }
