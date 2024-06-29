@@ -6,7 +6,7 @@ class CreateProductController {
         const { name, description, price, productPicture} = request.body as {
             name: string;
             description: string;
-            price: string;
+            price: number;
             productPicture: string;
         };
 

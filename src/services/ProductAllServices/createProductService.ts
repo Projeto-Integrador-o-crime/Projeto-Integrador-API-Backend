@@ -2,7 +2,7 @@ import prismaClient from "../../prisma";
 interface CreateProductProps {
     name: string;
     description: string;
-    price: string;
+    price: number;
     productPicture: string;
 }
 
