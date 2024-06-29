@@ -12,11 +12,16 @@ import { ResetPasswordController } from "./controllers/UserAllControllers/ResetP
 import { UpdateEditUserController } from "./controllers/UserAllControllers/UpdateEditUserController"
 import { GetUserByIdController } from "./controllers/UserAllControllers/GetUserByIdController";
 import { CreateProductController } from "./controllers/ProductAllControllers/createProductController";
+import { GetProductByIdController } from "./controllers/ProductAllControllers/GetProductByIdController";
 
 export async function routes(
   fastify: FastifyInstance,
   options: FastifyPluginOptions
 ) {
+
+  //                                USERS                                   //
+
+
   // ROTAS DA APLICAÇÃO
   // Listar todos os usuários
   fastify.get(
@@ -59,8 +64,8 @@ export async function routes(
   );
 
   // Obter dados do usuário pelo corpo da solicitação (por ID)
-  fastify.post(
-    "/user-data",
+  fastify.get(
+    "/user-data/:id",
     async (request: FastifyRequest, reply: FastifyReply) => {
       return new GetUserByIdController().handle(request, reply);
     }
@@ -83,7 +88,17 @@ export async function routes(
     async (request: FastifyRequest, reply: FastifyReply) => {
       return new CreateProductController().handle(request, reply);
     }
-  )
+  );
+
+  fastify.get(
+    "/product-data/:id",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new GetProductByIdController().handle(request, reply);
+    }
+  );
+
+
+
 
 
 }

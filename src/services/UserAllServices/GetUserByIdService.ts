@@ -1,6 +1,6 @@
 import prismaClient from "../../prisma";
 
-class GetUserByIdService {
+export class GetUserByIdService {
   async execute(id: string) {
     if (!id) {
       throw new Error("ID do usuário não fornecido!");
@@ -18,5 +18,3 @@ class GetUserByIdService {
     return user;
   }
 }
-
-export { GetUserByIdService };
