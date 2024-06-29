@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { LoginUserService } from "../services/LoginUserService";
+import { LoginUserService } from "../../services/UserAllServices/LoginUserService";
 
 class LoginUserController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { DeleteUserService } from "../services/DeleteUserService";
+import { DeleteUserService } from "../../services/UserAllServices/DeleteUserService";
 
 class DeleteUserController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

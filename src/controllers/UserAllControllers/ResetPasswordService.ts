@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { ResetPasswordService } from "../services/ResetPasswordService";
+import { ResetPasswordService } from "../../services/UserAllServices/ResetPasswordService";
 
 class ResetPasswordController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

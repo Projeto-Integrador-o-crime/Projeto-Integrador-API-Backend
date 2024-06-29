@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { GetUserByIdService } from "../services/GetUserByIdService";
+import { GetUserByIdService } from "../../services/UserAllServices/GetUserByIdService";
 
 class GetUserByIdController {
     async handle(request: FastifyRequest, reply: FastifyReply) {

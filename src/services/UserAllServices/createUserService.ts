@@ -1,5 +1,4 @@
-import prismaClient from "../prisma";
-
+import prismaClient from "../../prisma";
 interface CreateUserProps {
   name: string;
   email: string;

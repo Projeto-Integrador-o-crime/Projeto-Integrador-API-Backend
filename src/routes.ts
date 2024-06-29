@@ -4,13 +4,14 @@ import {
   FastifyRequest,
   FastifyReply,
 } from "fastify";
-import { CreateUserController } from "./controllers/createUserController";
-import { ListUserController } from "./controllers/ListUserController";
-import { DeleteUserController } from "./controllers/DeleteUserController";
-import { LoginUserController } from "./controllers/LoginUserController";
-import { ResetPasswordController } from "./controllers/ResetPasswordService";
-import { UpdateEditUserController } from "./controllers/UpdateEditUserController"
-import { GetUserByIdController } from "./controllers/GetUserByIdController";
+import { CreateUserController } from "./controllers/UserAllControllers/createUserController";
+import { ListUserController } from "./controllers/UserAllControllers/ListUserController";
+import { DeleteUserController } from "./controllers/UserAllControllers/DeleteUserController";
+import { LoginUserController } from "./controllers/UserAllControllers/LoginUserController";
+import { ResetPasswordController } from "./controllers/UserAllControllers/ResetPasswordService";
+import { UpdateEditUserController } from "./controllers/UserAllControllers/UpdateEditUserController"
+import { GetUserByIdController } from "./controllers/UserAllControllers/GetUserByIdController";
+import { CreateProductController } from "./controllers/ProductAllControllers/createProductController";
 
 export async function routes(
   fastify: FastifyInstance,
@@ -72,4 +73,17 @@ export async function routes(
       return new UpdateEditUserController().handle(request, reply);
     }
   );
+
+
+  //                                PRODUCTS                                   //
+
+  //Criar produtos
+  fastify.post(
+    "/product",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new CreateProductController().handle(request, reply);
+    }
+  )
+
+
 }
