@@ -22,7 +22,7 @@ class CreateProductService {
         });
 
         if (productExists) {
-            throw new Error("Amigão, ocê já subiu esse produto zé, ta loco?!");
+            throw new Error("Produto já existe!");
         }
 
 

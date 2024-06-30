@@ -14,6 +14,8 @@ import { GetUserByIdController } from "./controllers/UserAllControllers/GetUserB
 import { CreateProductController } from "./controllers/ProductAllControllers/createProductController";
 import { GetProductByIdController } from "./controllers/ProductAllControllers/GetProductByIdController";
 import { ListProductController } from "./controllers/ProductAllControllers/ListProductController";
+import { DeleteProductController } from "./controllers/ProductAllControllers/DeleteProductController";
+import { UpdateProductController } from "./controllers/ProductAllControllers/UpdateProductController";
 
 export async function routes(
   fastify: FastifyInstance,
@@ -83,7 +85,7 @@ export async function routes(
 
   //                                PRODUCTS                                   //
 
-  //Criar produtos
+  // Criar produtos
   fastify.post(
     "/product",
     async (request: FastifyRequest, reply: FastifyReply) => {
@@ -91,7 +93,7 @@ export async function routes(
     }
   );
 
-  //Listar todos os produtos
+  // Listar todas as informações de produtos
   fastify.get(
     "/products",
     async (request: FastifyRequest, reply: FastifyReply) => {
@@ -99,11 +101,27 @@ export async function routes(
     }
   );
 
-  //Listar produtos por Id
+  // Listar informações do produtos por Id
   fastify.get(
     "/product-data/:id",
     async (request: FastifyRequest, reply: FastifyReply) => {
       return new GetProductByIdController().handle(request, reply);
+    }
+  );
+
+  // Deleta informações do produto
+  fastify.delete(
+    "/product-delete",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new DeleteProductController().handle(request, reply);
+    }
+  );
+
+   // Atualizar informações do produto
+   fastify.put(
+    "/product/updated",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new UpdateProductController().handle(request, reply);
     }
   );
 
